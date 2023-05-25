@@ -29,7 +29,7 @@ for file in os.listdir(directory):
 	print(pixels)
 	prefix = file[:3]
 
-	df = df.append({"planet" : planet_vals[prefix], "pixels" : pixels}, ignore_index = True)
+	df = df.append({"planet" : int(planet_vals[prefix]), "pixels" : pixels}, ignore_index = True)
 
 	pixels = ""
 
