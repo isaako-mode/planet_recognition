@@ -7,6 +7,8 @@ directory = "../data/planets/"
 for plan in os.listdir(directory):
 	i = 0
 	for file in os.listdir(directory + plan):
+		#print(file[-3:])
+
 		img_path = directory + plan + "/" + file
 		planet_prefix = plan[:3]
 
@@ -14,6 +16,10 @@ for plan in os.listdir(directory):
 
 		img_resized = img.resize((80, 80))
 
-		img_resized.save(target_dir + planet_prefix + str(i) + ".jpg")
-		i += 1
+		try:
+
+			img_resized.save(target_dir + planet_prefix + str(i) + ".png")
+			i += 1
+		except:
+			continue
 
