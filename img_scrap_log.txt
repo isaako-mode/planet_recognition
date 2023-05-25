@@ -1,0 +1,4 @@
+astrobin:
+	venus last checked: page 23
+	mars last checked: page 3
+	jupiter last checked: page 1
