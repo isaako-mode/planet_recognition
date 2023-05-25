@@ -13,7 +13,7 @@ df = pd.DataFrame.from_dict(data)
 directory = "../data/pool/"
 file_name = "../data/data.csv"
 
-pixels = ""
+pixels = []
 
 
 for file in os.listdir(directory):
@@ -24,14 +24,14 @@ for file in os.listdir(directory):
 
 	for ls in arr[2]:
 		for pixel in ls:
-			pixels += str(pixel) + " "
+			pixels.append(pixel)
 
 	print(pixels)
 	prefix = file[:3]
 
 	df = df.append({"planet" : int(planet_vals[prefix]), "pixels" : pixels}, ignore_index = True)
 
-	pixels = ""
+	pixels = []
 
 print(df)
 
