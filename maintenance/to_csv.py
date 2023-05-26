@@ -24,12 +24,11 @@ for file in os.listdir(directory):
 
 	for ls in arr[2]:
 		for pixel in ls:
-			pixels.append(pixel)
+			pixels.append(int(pixel))
 
-	print(pixels)
 	prefix = file[:3]
 
-	df = df.append({"planet" : int(planet_vals[prefix]), "pixels" : pixels}, ignore_index = True)
+	df = df._append({"planet" : int(planet_vals[prefix]), "pixels" : pixels}, ignore_index = True)
 
 	pixels = []
 
