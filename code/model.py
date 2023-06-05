@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 data_dir = "../data/planets"
-batch_size = 32
+batch_size = 50
 
 data = tf.keras.utils.image_dataset_from_directory(data_dir)
 
@@ -40,8 +40,8 @@ plt.show()
 
 """
 
-train_size = int(len(data)*0.7)
-validation_size = int(len(data)*0.2)+1
+train_size = int(len(data)*0.5)
+validation_size = int(len(data)*0.4)+1
 test_size = int(len(data)*0.1)+1
 
 train = data.take(train_size)
@@ -50,13 +50,13 @@ test = data.skip(train_size + validation_size).take(test_size)
 
 model = Sequential()
 
-model.add(Conv2D(16, (3,3), 1, activation="relu", input_shape=(256,256,3)))
+model.add(Conv2D(16, (9,9), 1, activation="relu", input_shape=(256,256,3)))
 model.add(MaxPooling2D())
 
-model.add(Conv2D(32, (3,3), 1, activation="relu"))
+model.add(Conv2D(32, (9,9), 1, activation="relu"))
 model.add(MaxPooling2D())
 
-model.add(Conv2D(16, (3,3), 1, activation="relu"))
+model.add(Conv2D(16, (9,9), 1, activation="relu"))
 model.add(MaxPooling2D())
 
 model.add(Flatten())
@@ -73,6 +73,6 @@ history = model.fit(train, epochs=20, validation_data=validation)
 fig = plt.figure()
 plt.plot(history.history['loss'], color="teal", label="loss")
 plt.plot(history.history["val_loss"], color="orange", label="val_loss")
-fig.subtitle("Loss", fontsize=20)
+fig.suptitle("Loss")
 plt.legend(loc="upper left")
 plt.show()
